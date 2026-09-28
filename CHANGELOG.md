@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Versioned Evaluation Contracts (`longtracer.contracts`)**:
+  - Multi-layer typed verification outcome states (`ExecutionStatus`, `AssessmentAvailability`, `ClaimAssessment`, `QualityGate`).
+  - `SourceEvidence`: Normalized evidence model with automatic SHA-256 text hashing.
+  - `ClaimResult` & `CaseResult`: Explicit granular claim-level and response-level verification contracts with `schema_version = "1"`.
+  - `TestCase` & `ApplicationOutput`: Versioned data models for regression datasets and application callbacks.
+  - `RunManifest`: Reproducibility manifest capturing evaluator fingerprints, dataset digests, and runtime platform info.
+  - `ReviewRecord` & `BaselineRecord`: Audit structures for human-verified trace promotion and golden regression baselines.
+  - `LegacyVerificationAdapter`: Lossless bidirectional adapter between `VerificationResult` and `CaseResult`.
+  - Architecture Decision Record: `docs/adr/0001-result-state-contracts.md`.
 - **`longtracer doctor`** — new CLI command that inspects installation health
   without mutating any data or traces. Checks performed:
   - Python version (≥3.10 required)
