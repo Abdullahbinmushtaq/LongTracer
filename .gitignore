@@ -69,6 +69,5 @@ Pdf-docs/*.pdf
 # Environment
 .env
 site/
-site/
-ROADMAP.md
-tests/
+roadmap/
+
