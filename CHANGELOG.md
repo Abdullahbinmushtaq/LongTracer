@@ -8,6 +8,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Honest result semantics (`CaseResult`)** — a typed result reported alongside,
+  never instead of, the legacy `VerificationResult`:
+  - `CitationVerifier.verify_case()` / `verify_case_async()` and top-level
+    `check_case()` return a `CaseResult` with four layers: execution,
+    availability, per-claim assessment, and a separately computed quality gate.
+  - Empty, whitespace-only and too-short answers report `NO_ASSESSABLE_CLAIMS`
+    and can never pass the new quality gate.
+  - Evaluator failures, timeouts, cancellation and invalid input become typed
+    `ERROR` / `TIMEOUT` / `CANCELLED` states with `quality_gate=INDETERMINATE`;
+    no partial claims are reported.
+  - `ReasonCode` on every claim and on unassessed cases; source IDs, confidence,
+    raw scores and character offsets on each claim.
+  - `compute_quality_gate()`, `summarize_case()` and `unassessed_case()` in
+    `longtracer.contracts`.
+  - Optional `timeout=` on the new methods (returns immediately on expiry).
+  - Opt-in, experimental `detect_conflicts=True` that can emit
+    `CONFLICTING_SOURCES` (off by default; adds latency, see the docs).
+  - JSON Schema published at `docs/schema/case_result.v1.json`
+    (`python -m longtracer.contracts.schema`) with a compatibility test.
+  - Docs: "Result States" page, including the real meaning of the legacy fields.
+  - `benchmarks/smoke_verify_case.py` — real-model smoke test for every edge case.
 - **Typed evaluator errors (`longtracer.errors`)** — a small, import-light
   exception hierarchy raised instead of raw third-party exceptions. Each class
   also subclasses the matching built-in, so existing handlers keep working:
@@ -54,6 +75,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Reports per-model load time and exits 1 on download failure.
 
 ### Changed
+- `LegacyVerificationAdapter.from_legacy()` (from the contracts layer) now
+  computes the gate with `compute_quality_gate()`: a legacy result with no
+  claims maps to `QualityGate.FAIL` instead of `PASS`. It also maps real
+  verifier claim dicts from their raw signals and accepts an optional
+  `case_reason=` keyword. Legacy `VerificationResult` values are unchanged:
+  an empty answer still has `trust_score=1.0` and `verdict="PASS"`.
+- Documented `VerificationResult.trust_score` and `verdict` as legacy fields
+  with their actual semantics (mean similarity; vacuous `PASS` for empty answers).
 - `longtracer serve` default port corrected from `8100` to `8000` to match
   the documented dashboard URL (`http://localhost:8000/dashboard`).
   Users who previously relied on the undocumented `8100` default should pass

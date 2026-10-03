@@ -20,6 +20,10 @@ from longtracer.contracts.result import (
     ExecutionStatus,
     LegacyVerificationAdapter,
     QualityGate,
+    ReasonCode,
+    compute_quality_gate,
+    summarize_case,
+    unassessed_case,
 )
 from longtracer.contracts.review import BaselineRecord, ReviewRecord, ReviewState
 from longtracer.contracts.run import RunManifest
@@ -33,6 +37,10 @@ __all__ = [
     "AssessmentAvailability",
     "ClaimAssessment",
     "QualityGate",
+    "ReasonCode",
+    "compute_quality_gate",
+    "summarize_case",
+    "unassessed_case",
     "ClaimResult",
     "CaseResult",
     "LegacyVerificationAdapter",
