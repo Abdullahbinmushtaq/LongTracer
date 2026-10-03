@@ -8,6 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Typed evaluator errors (`longtracer.errors`)** — a small, import-light
+  exception hierarchy raised instead of raw third-party exceptions. Each class
+  also subclasses the matching built-in, so existing handlers keep working:
+  - `EvaluatorError` — base class.
+  - `ModelUnavailableError` (`ImportError`) — model missing, not downloaded, or
+    failed to load; the message points at `longtracer models prepare`.
+  - `EvaluationFailedError` (`RuntimeError`) — a model failed while scoring.
+  - `EvaluationTimeoutError` (`TimeoutError`) — evaluation exceeded its time limit.
+  - `InvalidInputError` (`ValueError`) — input the evaluator cannot assess.
+  - The original exception is always kept as `__cause__`.
+  - `CitationVerifier` input validation still raises `TypeError`, unchanged.
 - `docs/development/current-baseline.md` — internal engineering baseline
   (tests on Python 3.10/3.11/3.12, lint, types, build, docs, model revisions,
   cold/warm latency, peak memory, and known edge-case behaviour) recorded before
