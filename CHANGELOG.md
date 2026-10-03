@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `docs/development/current-baseline.md` — internal engineering baseline
+  (tests on Python 3.10/3.11/3.12, lint, types, build, docs, model revisions,
+  cold/warm latency, peak memory, and known edge-case behaviour) recorded before
+  any v0.3.0 semantic change. Not a public performance guarantee.
+- `benchmarks/perf_baseline.py` — reproducible script behind the latency and
+  memory numbers in the baseline report.
 - **Versioned Evaluation Contracts (`longtracer.contracts`)**:
   - Multi-layer typed verification outcome states (`ExecutionStatus`, `AssessmentAvailability`, `ClaimAssessment`, `QualityGate`).
   - `SourceEvidence`: Normalized evidence model with automatic SHA-256 text hashing.
