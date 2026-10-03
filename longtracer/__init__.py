@@ -13,6 +13,13 @@ Usage:
     from longtracer import instrument_langchain, instrument_llamaindex
 """
 
+try:
+    import importlib.metadata as _metadata
+
+    __version__ = _metadata.version("longtracer")
+except Exception:  # not installed (e.g. running from a source checkout)
+    __version__ = "0.0.0+unknown"
+
 from longtracer.core import LongTracer
 from longtracer.guard.verifier import CitationVerifier, VerificationResult
 
@@ -177,6 +184,7 @@ from longtracer.contracts.result import (
 CitationGuard = LongTracer
 
 __all__ = [
+    "__version__",
     "LongTracer",
     "CitationGuard",  # backward compat
     "CitationVerifier",

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-02
+
 ### Added
 - `make benchmark` — opt-in benchmark harness (`benchmarks/evaluator/run.py`)
   that runs `verify_case` with real weights and reports per-label precision and
