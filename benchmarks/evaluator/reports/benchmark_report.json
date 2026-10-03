@@ -463,11 +463,11 @@
   ],
   "latency_ms": {
     "n": 98,
-    "p50": 65.71079499917687,
-    "p95": 156.87424000134342
+    "p50": 62.725884999963455,
+    "p95": 170.43795499921544
   },
   "environment": {
-    "commit": "5f071e3-dirty",
+    "commit": "ca4e5f0",
     "python": "3.12.14",
     "os": "Linux 7.0.0-34-generic",
     "cpu": "AMD Ryzen 5 PRO 5650U with Radeon Graphics",

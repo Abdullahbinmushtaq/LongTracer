@@ -10,14 +10,14 @@
 | Split | `heldout` (98 cases) |
 | Dataset version | `0.3.0` |
 | Conflict detection | `True` |
-| Commit | `5f071e3-dirty` |
+| Commit | `ca4e5f0` |
 | Hardware | AMD Ryzen 5 PRO 5650U with Radeon Graphics (12 threads), device `cpu`, Linux 7.0.0-34-generic |
 | Python / torch / sentence-transformers / transformers | 3.12.14 / 2.14.1+cpu / 6.1.0 / 5.18.0 |
 | STS model | `sentence-transformers/all-MiniLM-L6-v2` @ `1110a243fdf4706b3f48f1d95db1a4f5529b4d41` |
 | NLI model | `cross-encoder/nli-deberta-v3-xsmall` @ `a150876415327c80daeff35ca6f68f5ed8cf5c24` |
 | Thresholds | support 0.40, NLI gate 0.25, contradiction/entailment 0.5 (unchanged) |
-| Latency per case | p50 66 ms, p95 157 ms (n=98) |
-| Generated | 2026-10-02 09:45:29 UTC |
+| Latency per case | p50 63 ms, p95 170 ms (n=98) |
+| Generated | 2026-10-03 03:58:42 UTC |
 
 ## 1. Release-gate hypotheses vs. measured
 
