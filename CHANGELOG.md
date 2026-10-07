@@ -34,7 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     `longtracer.contracts`.
   - Optional `timeout=` on the new methods (returns immediately on expiry).
   - Opt-in, experimental `detect_conflicts=True` that can emit
-    `CONFLICTING_SOURCES` (off by default; adds latency, see the docs).
+    `CONFLICTING_SOURCES` (off by default; adds roughly 55% to warm p95
+    latency when enabled, see the docs).
   - JSON Schema published at `docs/schema/case_result.v1.json`
     (`python -m longtracer.contracts.schema`) with a compatibility test.
   - Docs: "Result States" page, including the real meaning of the legacy fields.

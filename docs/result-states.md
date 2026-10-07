@@ -109,15 +109,17 @@ The default engine runs NLI only against the single best-matching source sentenc
 
 The outcome is recorded in `case.metadata["conflict_detection"]`. Failures become `ERROR`, never a silent skip.
 
-**Cost.** The setting is off by default, and with it off, latency is unchanged. Measured on the internal reference workload (8 claims, 5 sources, Ryzen 5 PRO 5650U, CPU), warm p95 was:
+**Cost.** The setting is off by default, and with it off, latency is unchanged. Enabling it adds roughly **55% to warm p95 latency**.
 
-| Path | Warm p95 |
-|---|---|
-| `verify_parallel` | 497 ms |
-| `verify_case`, default | 422 ms |
-| `verify_case(detect_conflicts=True)` | 675 ms |
+Measured on the internal reference workload (8 claims, 5 sources, 50 warm runs, Ryzen 5 PRO 5650U, CPU):
 
-The opt-in run is +40% against the pre-v0.3.0 baseline, which exceeds the internal 20% budget. That is why the feature is opt-in and marked experimental. These are internal engineering numbers, not a performance guarantee.
+| Path | Warm p95 | Peak memory |
+|---|---|---|
+| Pre-v0.3.0 baseline (`verify_parallel`) | 482 ms | 1,050 MB |
+| `verify_case`, default (conflicts off) | 454 ms | 1,009 MB |
+| `verify_case(detect_conflicts=True)` | 751 ms | 1,027 MB |
+
+The opt-in path is about +55% p95 against the pre-v0.3.0 baseline, which exceeds the internal 20% budget. That is why the feature is opt-in and marked experimental. Memory overhead is small (about +2%). These are internal engineering numbers, not a performance guarantee.
 
 ## Legacy fields: what they actually mean
 

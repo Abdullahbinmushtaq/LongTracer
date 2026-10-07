@@ -642,7 +642,8 @@ class CitationVerifier:
                 result is ``TIMEOUT``/``INDETERMINATE``; the background work is
                 not killed.
             detect_conflicts: Opt-in multi-source NLI check that can emit
-                ``CONFLICTING_SOURCES``. Off by default (extra latency).
+                ``CONFLICTING_SOURCES``. Off by default; experimental. Adds
+                roughly 55% to warm p95 latency when enabled.
 
         Returns:
             A ``CaseResult`` with ``schema_version`` set.
