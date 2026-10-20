@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced relative README image paths with public HTTPS URLs so the TUI demo,
   Python API demo, and dashboard screenshot load correctly in the PyPI description.
 - Added the CLI verification GIF to the README with its matching command and label.
+- Reject non-finite timeout values with `InvalidInputError` before evaluation
+  through the synchronous, asynchronous, and `check_case()` APIs.
 
 ## [0.3.0] - 2026-10-02
 
