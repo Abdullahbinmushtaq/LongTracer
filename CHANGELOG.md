@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the CLI verification GIF to the README with its matching command and label.
 - Reject non-finite timeout values with `InvalidInputError` before evaluation
   through the synchronous, asynchronous, and `check_case()` APIs.
+- Updated the quickstart and CLI reference for typed quality gates, diagnostic
+  commands, model preparation, and the currently inactive threshold setting.
 
 ## [0.3.0] - 2026-10-02
 
