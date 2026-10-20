@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Raised the minimum supported Python version from 3.10 to 3.11 and aligned
   installation documentation, diagnostics, CI, and development tool settings.
 
+### Added
+- Offline CI checks of wheel and source-distribution metadata, including the
+  release version, Python requirement, and all four public demo image URLs.
+
 ### Fixed
 - Replaced relative README image paths with public HTTPS URLs so the TUI demo,
   Python API demo, and dashboard screenshot load correctly in the PyPI description.
